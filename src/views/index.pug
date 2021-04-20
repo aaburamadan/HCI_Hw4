@@ -1,0 +1,34 @@
+Doctype 
+  html
+     head
+         title Exploring the Pug template
+         //- script(src="/src/views/changeTheme.js")
+         style 
+            include styles.css   
+     body(class="light")
+         h1 Review your favorite movie!
+         p.first_paragraph Have you ever wanted to rant about your favorite movies? Well, now's your chance...
+
+
+         //- small script to change themes
+         script.
+            const body = document.body;
+            const theme = localStorage.getItem('theme');
+
+            if(theme){
+               body.classList.add(theme);
+            } 
+
+            function switchTheme(){
+               if(body.classList.contains('light')){
+                  body.classList.replace('light', 'dark');
+                  localStorage.setItem('theme', 'dark');
+               } else if(body.classList.contains('dark')){ 
+                  body.classList.replace('dark', 'light');
+                  localStorage.setItem('theme', 'light');
+               }
+            };
+         script
+         //- =======
+
+         button(type="button" onclick="switchTheme()") Toggle Theme
