@@ -1,14 +1,36 @@
 Doctype 
   html
      head
-         title Exploring the Pug template
+         title Home | Movie Reviews
          //- script(src="/src/views/changeTheme.js")
          style 
             include styles.css   
      body(class="light")
-         h1 Review your favorite movie!
-         p.first_paragraph Have you ever wanted to rant about your favorite movies? Well, now's your chance...
+         //- navigation
+         .navbar
+            a.active Home 
+            a Reviews
+            a 
+               button(type="button" onclick="switchTheme()") Toggle Theme
 
+         //- main 
+         .main_body
+            .header
+               h1 Welcome to Movie Reviews 
+               p.first_paragraph Have you ever wanted to rant about your favorite movies? Well, now's your chance...
+
+            .main 
+               h4.sign_up Sign Up
+               form
+                  .field
+                     input(type="email" name="email" class="input" placeholder="")
+                     label(for="email" class="label") Email
+                  .field
+                     input(type="password" name="password" class="input" placeholder="")
+                     label(for="password" class="label") Password
+                     
+
+         
 
          //- small script to change themes
          script.
@@ -31,4 +53,4 @@ Doctype
          script
          //- =======
 
-         button(type="button" onclick="switchTheme()") Toggle Theme
+         
