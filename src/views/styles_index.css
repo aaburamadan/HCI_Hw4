@@ -1,0 +1,134 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --white: #ffffff;
+  --gray0: #f8f8f8;
+  --gray1: #dfdfdf;
+  --gray2: #bebebe;
+  --gray3: #808080;
+  --gray4: #a33030;
+  --gray5: #313131;
+  --gray6: #202020;
+  --black: #000000;
+  --blue: #0084a5;
+  --purple: #a82dd1;
+  --yellow: #fff565;
+}
+
+/* ========= Main Page ========= */
+
+body {
+  background: var(--bg);
+  transition: background 500ms ease-in-out, color 1000ms ease-in-out;
+
+  text-align: center;
+  color: var(--text);
+}
+
+.main_body {
+  /* height: 100vh; */
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.header {
+  background-color: var(--bg-darker);
+  padding: 20px;
+  margin-top: 20px;
+  width: 80%;
+}
+
+.main {
+  background-color: var(--bg-darker);
+  margin-top: 20px;
+  padding: 20px;
+  width: 80%;
+}
+
+/* ===== Adding Svg to themeButton ===== */
+.themeswitch_button {
+  width: 40px;
+  height: 40px;
+}
+
+.themeswitch_button svg {
+  width: 35px;
+  height: 35px;
+}
+
+/* === Theme Switcher === */
+.light {
+  --bg: var(--gray0);
+  --bg-darker: var(--gray1);
+  --text: var(--gray6);
+  --border-color: var(--blue);
+}
+
+.dark {
+  --bg: var(--gray5);
+  --bg-darker: var(--gray6);
+  --text: var(--gray0);
+  --border-color: var(--purple);
+}
+
+/* ===== Creating account ===== */
+
+form {
+  --text-color: #afafaf;
+  margin-left: 20rem;
+  margin-right: 20rem;
+}
+.field {
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  border-bottom: 2px dashed var(--text-color);
+  margin: 4rem auto 1rem;
+  transition: 500ms;
+}
+.input {
+  outline: none;
+  border: none;
+  overflow: hidden;
+  margin: 0;
+  width: 100%;
+  padding: 0.25rem 0;
+  background: none;
+  color: white;
+  font-size: 1.2em;
+  font-weight: bold;
+  transition: border 500ms;
+}
+.input:valid {
+  color: yellowgreen;
+}
+.input:invalid {
+  color: orangered;
+}
+/* Border animation */
+.field::after {
+  content: "";
+  position: relative;
+  display: block;
+  height: 4px;
+  width: 100%;
+  background: var(--blue);
+  transform: scaleX(0);
+  transform-origin: 0%;
+  opacity: 0;
+  transition: all 500ms ease;
+  top: 2px;
+}
+.field:focus-within {
+  border-color: transparent;
+}
+.field:focus-within::after {
+  transform: scaleX(1);
+  opacity: 1;
+}

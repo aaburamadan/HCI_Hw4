@@ -10,6 +10,9 @@ app.set('views', './src/views');
 app.get('/', (req,res) => {
     res.render("index");
 });
+app.get('/reviews', (req, res) => {
+    res.render("reviews.pug");
+})
 
 
 // setting up and linking mongodb with nodejs
