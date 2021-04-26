@@ -9,7 +9,7 @@
 
 ## Creating a DB with MongoDB
 
-> - [ ] Initializing and integrating a DB inside Nodejs
+> - [x] Initializing and integrating a DB inside Nodejs
 > - [ ] Creating a dataset
 
 ### Useful Links (for MONGODB)
@@ -18,8 +18,8 @@
 
 ## Frontend
 
-> - [ ] Use PUG for the hyper text markup
-> - [ ] Create separate file: styles.css
+> - [x] Use PUG for the hyper text markup
+> - [x] Create separate file: styles.css
 > - [ ] Design a basic layout of the website
 > - [ ] Implement a login system?
 
