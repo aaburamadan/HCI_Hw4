@@ -15,12 +15,14 @@ app.get('/query_db', (req, res) => {
     res.render("query_db.pug");
 });
 
+
 // ======= Server Operations ======= 
 
 // Connecting to mongodb server
 
 const MongoClient = require('mongodb').MongoClient;
 const assert = require('assert');
+const { Mongoose } = require('mongoose');
 
 const url = 'mongodb://localhost:27017';
 
@@ -34,6 +36,22 @@ client.connect(function(err){
 
     const db = client.db(dbName);
 
+    // Inserting Userdata to collection 'users' using `insertOne` command ()
+    db.collection('users').insertOne({username: "testuser", password: "testpassword"}, function(err, r){
+        assert.equal(null, err);
+        assert.equal(1, r.insertedCount);
+
+        client.close();
+    });
+
+    // Inserting Userdata to collection 'users' using `insertOne` command ()
+    // db.collection('users').insertMany([{username: "testuser1", password: "testpassword1"}, {username: "testuser2", password: "testpassword2"}], function(err, r){
+    //     assert.equal(null, err);
+    //     assert.equal(2, r.insertedCount); // set assert.equal 1st parameter set to 2. (set to as many users as you want to input simultanenously)
+
+    //     client.close();
+    // });
+
     // calling function 'getDbStats'
     getDbStats(db, function(){
         client.close();
@@ -44,10 +62,15 @@ client.connect(function(err){
         client.close();
     });
 
-    // calling function 'createTextIndex'
-    createTextIndex(db, function(){
-        client.close();
-    });
+    // calling function 'createTextIndex' (using text function -> for username)
+    // createTextIndex(db, function(){
+    //     client.close();
+    // });
+
+    // calling function 'createTextIndex' (using hashed function -> for passwords)
+    // createHashedIndex(db, function(){
+    //     client.close();
+    // });
 
     // calling function 'createValidated'
     createValidated(db, function(){
@@ -90,7 +113,7 @@ function createValidated(db, callback){
                 'validator': { '$or':
                 [
                     { 'username': {'$type': 'string'}},
-                    { 'password': { '$type': 'string'}}
+                    { 'password': {'$type': 'string'}}
                 ]}
             },
         function(err, results){
@@ -106,13 +129,24 @@ function createTextIndex(db, callback){
     const collection = db.collection('users');
 
     collection.createIndex(
-        { comments : "text" }, function(err, result){
+        { username : "newuser"}, function(err, result){
             console.log(result);
             callback(result);
     });
 };
 
 // Create a Hashed Index
+
+function createHashedIndex(db, callback){
+    const collection = db.collection('users');
+
+    collection.createIndex(
+        { password : "password" }, function(err, result){
+            console.log(result);
+            callback(result);
+        }
+    )
+}
 
 // ==================================
 
