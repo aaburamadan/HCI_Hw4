@@ -5,13 +5,14 @@ Doctype
          script
             include changeTheme.js
          style 
-            include nav_bar.css
-            include styles_index.css   
+            include ./css/nav_bar.css
+            include ./css/styles_index.css   
      body(class="light")
          //- navigation
          .navbar
             a.active(href="/") Home 
             a(href="/reviews") Reviews
+            a(href="/query_db") QueryDB
             a 
                button(class="themeswitch_button" type="button" onclick="switchTheme()")
                   <svg version="1.1" id="Icons" class="themesvg"xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 32 32" style="enable-background:new 0 0 32 32;" xml:space="preserve">
@@ -30,9 +31,12 @@ Doctype
                p.first_paragraph Have you ever wanted to rant about your favorite movies? Well, now's your chance...
 
             .main 
-               h4.sign_up Sign Up
+               h3.sign_up Create an account
                form
+                  .field 
+                     input(type="username" name="username" class="input" placeholder="Username")
+                  //- .field
+                  //-    input(type="email" name="email" class="input" placeholder="Email")
                   .field
-                     input(type="email" name="email" class="input" placeholder="Email")
-                  .field
-                     input(type="password" name="password" class="input" placeholder="Password")
+                     input(type="password" name="password" class="input" placeholder="Password") 
+               button(class="submit_form" type="button") Submit

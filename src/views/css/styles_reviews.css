@@ -44,17 +44,6 @@
   margin: 1rem;
 }
 
-/* ===== Adding Svg to themeButton ===== */
-.themeswitch_button {
-  width: 40px;
-  height: 40px;
-}
-
-.themeswitch_button svg {
-  width: 35px;
-  height: 35px;
-}
-
 /* === Theme Switcher === */
 .light {
   --bg: var(--gray0);

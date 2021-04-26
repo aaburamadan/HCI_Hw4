@@ -62,21 +62,6 @@ body {
   height: 35px;
 }
 
-/* === Theme Switcher === */
-.light {
-  --bg: var(--gray0);
-  --bg-darker: var(--gray1);
-  --text: var(--gray6);
-  --border-color: var(--blue);
-}
-
-.dark {
-  --bg: var(--gray5);
-  --bg-darker: var(--gray6);
-  --text: var(--gray0);
-  --border-color: var(--purple);
-}
-
 /* ===== Creating account ===== */
 
 form {
@@ -131,4 +116,10 @@ form {
 .field:focus-within::after {
   transform: scaleX(1);
   opacity: 1;
+}
+
+/* Submit button */
+.submit_form {
+  margin: 1rem;
+  font-size: 1.5rem;
 }
