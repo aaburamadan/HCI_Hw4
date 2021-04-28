@@ -34,25 +34,9 @@ app.get('/login', (req, res) => {
     res.render("login.pug");
 });
 
-// app.post('/register', async (req, res) => {
-//     try {
-//       const hashedPassword = await bcrypt.hash(req.body.password, 10);
-//       users.push({
-//         id: Date.now().toString(),
-//         name: req.body.name,
-//         email: req.body.email,
-//         password: hashedPassword
-//       })
-//       res.redirect('/login')
-//     } catch {
-//       res.redirect('/register')
-//     }
-//     console.log(users);
-// });
-
-app.post('/login', (req, res) => {
-
-});
+// setup encryption
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
 
 app.post('/register', async (req, res) => {
     try {
@@ -62,20 +46,46 @@ app.post('/register', async (req, res) => {
         
             const db = client.db(dbName);
 
-            // req.body.password = Bcrypt.hashSync(req.body.password, 10);
-            // Inserting Userdata to collection 'users' using `insertOne` command ()
-            db.collection('users').insertOne({username: req.body.username, password: req.body.password}, function(err, r){
+            password = req.body.password;
+            bcrypt.hash(password, saltRounds, function(err, hash){
+                db.collection('users').insertOne({username: req.body.username, password: hash}, function(err, r){
                 assert.equal(null, err);
                 assert.equal(1, r.insertedCount);
         
                 client.close();
             });
+            
+                console.log(hash);
+                bcrypt.compare(password, hash, function(err, result){
+                    console.log(result);
+                });
+            });
+
       })
       res.redirect('/login')
     } catch {
       res.redirect('/register')
     }
 });
+
+// app.post('/login', async (req, res) => {
+//     try{
+//         client.connect(function(err){
+//             assert.equal(null, err);
+//             console.log("Successfully connected to server");
+
+//             const db = client.db(dbName);
+//             password = req.body.password;
+//             bcrypt.compare(password, hash, function(err, result){
+//                 console.log(result);
+//             });
+
+//         })
+//         res.redirect('/');
+//     } catch {
+//         res.redirect('/login');
+//     }
+// });
 
 
 
