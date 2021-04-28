@@ -28,3 +28,12 @@
 
 > - `git remote add origin 'url_of_your_github_repo`
 > - `git push -u origin master`
+
+## Simple push to get
+
+> - `git branch` Check to see if on master, if not, move to master using `git switch master`
+> - `git add .` Add file to commit
+> - `git status` Check the status of files
+> - `git commit -m "name of your commit"`
+> - `git status`
+> - `git push -u origin master` Finally push it to git
