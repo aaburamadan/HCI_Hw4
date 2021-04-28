@@ -1,0 +1,74 @@
+:root {
+  --white: #ffffff;
+  --gray0: #f8f8f8;
+  --gray1: #dfdfdf;
+  --gray2: #bebebe;
+  --gray3: #808080;
+  --gray4: #a33030;
+  --gray5: #313131;
+  --gray6: #202020;
+  --black: #000000;
+  --blue: #0084a5;
+  --purple: #a82dd1;
+  --yellow: #fff565;
+}
+
+/* ========= Main Page ========= */
+
+/* Navigation */
+.navbar {
+  /* overflow: hidden; */
+  background-color: var(--bg-darker);
+
+  display: flex;
+  align-items: center;
+  justify-content: left;
+}
+
+.navbar a {
+  float: left;
+  color: var(--text);
+  text-align: center;
+  padding: 16px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.navbar a:hover {
+  /* add exception to button*/
+  background-color: var(--bg);
+  color: black;
+}
+
+.navbar .active {
+  background-color: var(--blue);
+  color: var(--text);
+}
+
+/* === Change Theme Button ===*/
+
+/* Adding Svg to themeButton */
+.themeswitch_button {
+  width: 40px;
+  height: 40px;
+}
+
+.themeswitch_button svg {
+  width: 35px;
+  height: 35px;
+}
+
+/* === Theme Switcher === */
+.light {
+  --bg: var(--gray0);
+  --bg-darker: var(--gray1);
+  --text: var(--gray6);
+  --border-color: var(--blue);
+}
+
+.dark {
+  --bg: var(--gray5);
+  --bg-darker: var(--gray6);
+  --text: var(--gray0);
+  --border-color: var(--purple);
+}
